@@ -1,4 +1,4 @@
-# Nlw Explorer - Tribe React
+# Logo Ali - Register your travels!
 
 <img
   src="/src/assets/react.svg"
