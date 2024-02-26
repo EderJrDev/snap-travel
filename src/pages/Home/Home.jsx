@@ -8,7 +8,7 @@ import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 const Home = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
-  const { documents: posts, loading } = useFetchDocuments("posts");
+  const { documents: posts } = useFetchDocuments("posts");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,8 +29,6 @@ const Home = () => {
         <button className="btn btn-dark">Pesquisar</button>
       </form>
       <div>
-        {/* {loading && <p>Carregando...</p>}
-        {posts && posts.map((post) => <h3 key={post.title}>{post.title}</h3>)} */}
         {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
