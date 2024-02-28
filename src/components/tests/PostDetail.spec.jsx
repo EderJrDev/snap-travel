@@ -47,7 +47,6 @@ it('should render tags correctly', () => {
     </BrowserRouter>
   );
 
-
   // Verifique se cada tag está presente
   post.tagsArray.forEach(tag => {
     const tags = getByText(tag)
