@@ -7,12 +7,13 @@ import { useAuthentication } from "../hooks/useAuthentication";
 const Navbar = () => {
   const { user } = useAuthValue();
   const { logout } = useAuthentication();
+
   return (
     <nav className={styles.navbar}>
       <NavLink to="/" className={styles.brand}>
-        Logo <span>Ali</span>
+        Snap <span>Travel</span>
       </NavLink>
-      <ul className={styles.links_list}>
+      <ul className={`${styles.links_list} ${styles.hidden}`}>
         <li>
           <NavLink
             to="/"

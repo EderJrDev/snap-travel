@@ -4,6 +4,7 @@
 
 .post_detail img {
   max-width: 600px;
+  border-radius: 10px;
 }
 
 .post_detail h2 {
@@ -28,4 +29,10 @@
   color: #444;
   font-size: 0.8em;
   margin-bottom: 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .post_detail img {
+    max-width: 350px;
+  }
 }

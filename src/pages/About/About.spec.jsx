@@ -1,4 +1,3 @@
-import React from "react";
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
@@ -15,5 +14,4 @@ describe(About.name, () => {
     const linkElement = getByText("Criar registro");
     expect(linkElement).toBeTruthy();
   });
-
-})
+});

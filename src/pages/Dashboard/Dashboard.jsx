@@ -21,7 +21,7 @@ const Dashboard = () => {
     <div className={styles.dashboard}>
       <h2>Dashboard</h2>
       <p>Gerencie os seus registros</p>
-      {posts && posts.length === 0 ? (
+      {(posts && posts.length === 0) || posts === null ? (
         <div className={styles.noposts}>
           <p>Não foram encontrados posts</p>
           <Link to="/posts/create" className="btn">

@@ -1,13 +1,14 @@
 .navbar {
   display: flex;
-  box-shadow: rgba(0, 0, 0, .15) 0px -2px 10px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
   justify-content: space-between;
   align-items: center;
-  padding: .5em 2em;
+  padding: 0.5em 2em;
 }
 
 .brand {
   font-size: 1.2em;
+  color: #84cc16;
 }
 
 .brand span {
@@ -22,11 +23,17 @@
 
 .links_list li a {
   margin-right: 1em;
-  padding: .4em .6em;
+  padding: 0.4em 0.6em;
   border-radius: 0.3em;
 }
 
 .active {
-  background-color: #000;
-  color: #fff;
+  background-color: #93c24d;
+  color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .brand {
+    display: none;
+  }
 }

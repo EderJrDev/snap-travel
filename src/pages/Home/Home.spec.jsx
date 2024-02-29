@@ -3,10 +3,8 @@ import Home from "./Home";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as router from "react-router";
-import * as useFetchDocumentsModule from '../../hooks/useFetchDocuments';
 
-describe('Home', () => {
-
+describe("Home", () => {
   const navigate = vi.fn();
 
   beforeEach(() => {
@@ -18,13 +16,13 @@ describe('Home', () => {
     const inputElement = getByPlaceholderText("Ou busque por tags...");
     expect(inputElement).toBeTruthy();
   });
-})
+});
 
 let navigateMock;
 
 beforeEach(() => {
   navigateMock = vi.fn();
-  vi.spyOn(router, 'useNavigate').mockReturnValue(navigateMock);
+  vi.spyOn(router, "useNavigate").mockReturnValue(navigateMock);
 });
 
 // it('should search when click on button', () => {

@@ -29,3 +29,11 @@
 .noposts a {
   padding: 10px 25px;
 }
+
+/* mobile */
+
+@media screen and (max-width: 768px) {
+  .home {
+    text-align: center;
+  }
+}
