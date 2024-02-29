@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 import {
   collection,
-  onSnapshot,
   query,
   orderBy,
+  onSnapshot,
   where,
 } from "firebase/firestore";
 
@@ -13,12 +13,14 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
-  //deal with memory leak
+  // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
     async function loadData() {
-      if (cancelled) return;
+      if (cancelled) {
+        return;
+      }
 
       setLoading(true);
 
@@ -30,7 +32,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         if (search) {
           q = await query(
             collectionRef,
-            where("tagsArray", "array-contains", search),
+            where("tags", "array-contains", search),
             orderBy("createdAt", "desc")
           );
         } else if (uid) {
@@ -43,9 +45,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
           q = await query(collectionRef, orderBy("createdAt", "desc"));
         }
 
-        //busca
-        //dashboard
-
         await onSnapshot(q, (querySnapshot) => {
           setDocuments(
             querySnapshot.docs.map((doc) => ({
@@ -54,17 +53,18 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
             }))
           );
         });
-        setLoading(false);
       } catch (error) {
         console.log(error);
         setError(error.message);
-
-        setLoading(false);
       }
+
+      setLoading(false);
     }
 
     loadData();
   }, [docCollection, search, uid, cancelled]);
+
+  console.log(documents);
 
   useEffect(() => {
     return () => setCancelled(true);
