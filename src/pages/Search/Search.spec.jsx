@@ -1,8 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+
 import { BrowserRouter } from "react-router-dom";
 import Search from "./Search";
+
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
-import { describe, expect, it, vi } from "vitest";
 
 // Mock do hook useFetchDocuments
 vi.mock("../../hooks/useFetchDocuments");

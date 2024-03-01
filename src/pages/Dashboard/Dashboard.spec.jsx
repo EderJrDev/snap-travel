@@ -1,7 +1,8 @@
 import { render } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+
 import { BrowserRouter as Router } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import { describe, expect, it, vi } from "vitest";
 
 // Mockando useAuthValue
 vi.mock("../../context/AuthContext", () => ({
@@ -30,13 +31,6 @@ describe("Dashboard component", () => {
 
     expect(getByText("Dashboard")).toBeTruthy();
     expect(getByText("Gerencie os seus registros")).toBeTruthy();
-    // expect(getByText('Título')).toBeTruthy();
-    // expect(getByText('Ações')).toBeTruthy();
-
-    // Verifica se os posts foram carregados e exibidos corretamente
-    // await waitFor(() => {
-    //   expect(getByText('Test Post')).toBeTruthy();
-    // });
   });
 
   it('displays "Criar primeiro post" when no posts are available', async () => {

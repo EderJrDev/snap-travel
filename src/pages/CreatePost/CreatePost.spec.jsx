@@ -1,5 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+
 import CreatePost from "./CreatePost";
 
 // Mockando useAuthValue
@@ -45,7 +46,5 @@ describe("CreatePost component", () => {
     });
 
     expect(getByText("Cadastrar")).toBeTruthy();
-
-    // Add assertions for expected behavior after submission
   });
 });

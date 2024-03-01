@@ -1,7 +1,9 @@
-//CSS
 import { Link } from "react-router-dom";
-import { useAuthValue } from "../../context/AuthContext";
+//CSS
 import styles from "./Dashboard.module.css";
+
+import { useAuthValue } from "../../context/AuthContext";
+
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useDeleteDocument } from "../../hooks/useDeleteDocuments";
 
@@ -14,7 +16,7 @@ const Dashboard = () => {
   const { deleteDocument } = useDeleteDocument("posts");
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <div className={styles.loading}>Carregando...</div>;
   }
 
   return (

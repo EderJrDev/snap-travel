@@ -1,7 +1,8 @@
 import { render, fireEvent, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+
 import { MemoryRouter } from "react-router-dom";
 import EditPost from "./EditPost";
-import { describe, expect, it, vi } from "vitest";
 
 // Mockando useAuthValue
 vi.mock("../../context/AuthContext", () => ({
@@ -78,9 +79,5 @@ describe("EditPost component", () => {
     });
 
     fireEvent.click(getByText("Editar"));
-
-    // expect(getByText('Aguarde...')).toBeTruthy();
-
-    // Adicione asserções para verificar o comportamento após a submissão
   });
 });

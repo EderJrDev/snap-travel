@@ -18,6 +18,12 @@
   width: 50%;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .noposts {
   text-align: center;
 }

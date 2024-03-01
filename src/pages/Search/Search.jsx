@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+//CSS
 import styles from "./Search.module.css";
 
 import { useQuery } from "../../hooks/useQuery";

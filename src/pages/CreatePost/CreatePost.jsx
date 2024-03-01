@@ -1,10 +1,11 @@
-//CSS
 import { useState } from "react";
-import styles from "./CreatePost.module.css";
-import { useInsertDocument } from "../../hooks/useInsertDocument";
-import { useAuthValue } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+//CSS
+import styles from "./CreatePost.module.css";
+
+import { useAuthValue } from "../../context/AuthContext";
+import { useInsertDocument } from "../../hooks/useInsertDocument";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
