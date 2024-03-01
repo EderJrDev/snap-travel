@@ -5,6 +5,7 @@ import { useAuthValue } from "../../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useUpdateDocument } from "../../hooks/useUpdateDocument";
+import { toast } from "sonner";
 
 const EditPost = () => {
   const { id } = useParams();
@@ -64,6 +65,8 @@ const EditPost = () => {
     };
 
     updateDocument(id, data);
+
+    toast.success("Post editado com sucesso!");
 
     // redirect to home page
     navigate("/dashboard");

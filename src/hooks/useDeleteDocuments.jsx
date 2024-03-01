@@ -1,6 +1,7 @@
-import { useEffect, useReducer, useState } from "react";
 import { db } from "../firebase/config";
-import { doc, deleteDoc } from "firebase/firestore";
+import { useState, useEffect, useReducer } from "react";
+import { deleteDoc, doc } from "firebase/firestore";
+import { toast } from "sonner";
 
 const initialState = {
   loading: null,
@@ -12,9 +13,9 @@ const deleteReducer = (state, action) => {
     case "LOADING":
       return { loading: true, error: null };
     case "DELETED_DOC":
-      return { loading: true, error: null };
+      return { loading: false, error: null };
     case "ERROR":
-      return { loading: true, error: action.payload };
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
@@ -23,6 +24,7 @@ const deleteReducer = (state, action) => {
 export const useDeleteDocument = (docCollection) => {
   const [response, dispatch] = useReducer(deleteReducer, initialState);
 
+  // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
 
   const checkCancelBeforeDispatch = (action) => {
@@ -32,21 +34,19 @@ export const useDeleteDocument = (docCollection) => {
   };
 
   const deleteDocument = async (id) => {
-    checkCancelBeforeDispatch({
-      type: "LOADING",
-    });
+    checkCancelBeforeDispatch({ type: "LOADING" });
+
     try {
-      const deleteDocument = await deleteDoc(doc(db, docCollection, id));
+      const deletedDocument = await deleteDoc(doc(db, docCollection, id));
 
       checkCancelBeforeDispatch({
         type: "DELETED_DOC",
-        payload: deleteDocument,
+        payload: deletedDocument,
       });
+
+      toast.success("Post excluído com sucesso!");
     } catch (error) {
-      checkCancelBeforeDispatch({
-        type: "Error",
-        payload: error.message,
-      });
+      checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
     }
   };
 

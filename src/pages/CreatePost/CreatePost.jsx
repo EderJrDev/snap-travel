@@ -4,6 +4,7 @@ import styles from "./CreatePost.module.css";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useAuthValue } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -47,6 +48,8 @@ const CreatePost = () => {
       uid: user.uid,
       createdBy: user.displayName,
     });
+
+    toast.success("Post criado com sucesso!");
 
     // redirect to home page
     navigate("/");

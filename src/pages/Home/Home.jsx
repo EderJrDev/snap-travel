@@ -10,6 +10,7 @@ import { useState } from "react";
 
 // components
 import PostDetail from "../../components/PostDetail";
+import { toast } from "sonner";
 
 const Home = () => {
   const { documents: posts, loading } = useFetchDocuments("posts");
@@ -23,6 +24,8 @@ const Home = () => {
 
     if (query) {
       return navigate(`/search?q=${query}`);
+    } else {
+      toast.warning("Informe uma tag na pesquisa!");
     }
   };
 
